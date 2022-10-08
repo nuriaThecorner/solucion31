@@ -1,0 +1,65 @@
+﻿@model _04_Data.Datos.Autor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Borrar Artista</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Artistas</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Borrar Artista</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div>
+            <h2>Borrar</h2>
+
+            <h3>¿Estás seguro/a que quieres borrar esto?</h3>
+            <div>
+                <hr />
+
+
+
+                <!-- Artista -->
+                <div class="container-fluid py-5">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 pb-4 pb-lg-0">
+                                <img class="img-fluid w-100" src="@Html.DisplayFor(model => model.imagen)" alt="">
+                            </div>
+                            <div class="col-lg-7">
+                                <h1 class="mb-4">@Html.DisplayFor(model => model.nombre)</h1>
+                                <p class="mb-4">@Html.DisplayFor(model => model.decripcion)</p>
+                                <ul class="list-inline">
+                                    <li><i class="far fa-dot-circle text-primary mr-3"></i><a target="_blank" class="border-bottom text-decoration-none" href="@Html.DisplayFor(model => model.spotify)">Spotify</a>
+                                    <li><i class="far fa-dot-circle text-primary mr-3"></i><a target="_blank" class="border-bottom text-decoration-none" href="@Html.DisplayFor(model => model.twitter)">Twitter</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Artista final -->
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Borrar" class="btn btn-primary py-2 px-4 my-2" /> |
+                        @Html.ActionLink("Volver a la lista", "Index")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

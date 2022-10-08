@@ -1,0 +1,64 @@
+﻿@model _04_Data.Datos.Disco
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Detalle Disco</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Inicio</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Detalle Disco</p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Tema -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 pb-4 pb-lg-0">
+                <img class="img-fluid w-100" src="@Html.DisplayFor(model => model.imagen)" alt="">
+
+
+            </div>
+            <div class="col-lg-7">
+                <span>Categoria: </span>
+                <span>@Html.DisplayFor(model => model.Categoria.nombre)</span>
+                <h3 class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(model => model.Autor.nombre)</h3>
+
+                <h1 class="mb-4">@Html.DisplayFor(model => model.nombre)</h1>
+
+
+                <span>Discográfica: </span>
+                <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(model => model.Discografica.nombre)</span>
+
+                <br /><br /><br />
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+                    @Html.ActionLink("Volver a  la lista", "Index")
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<!--Tema final -->
+@{
+    string onClickAnterior = "disco(" + Model.id + "," + 0 + ")";
+    string onClickSiguiente = "disco(" + Model.id + "," + 1 + ")";
+}
+<input type="button" value="Anterior" onclick=@onClickAnterior>
+<input type="button" value="Siguiente" onclick=@onClickSiguiente>
+@{
+    Layout = null;
+}

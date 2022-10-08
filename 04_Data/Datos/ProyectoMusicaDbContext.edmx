@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoMusicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="decripcion" Type="varchar" MaxLength="150" />
+          <Property Name="imagen" Type="varchar" MaxLength="250" />
+          <Property Name="spotify" Type="varchar" MaxLength="250" />
+          <Property Name="twitter" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Disco">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_discografia" Type="int" />
+          <Property Name="id_autor" Type="int" />
+          <Property Name="id_categoria" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="imagen" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Discografica">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="imagen" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Tema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_disco" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="link" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <Association Name="FK_Disco_Autor">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="0..1" />
+          <End Role="Disco" Type="Self.Disco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Disco">
+              <PropertyRef Name="id_autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disco_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Disco" Type="Self.Disco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Disco">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disco_Discografica">
+          <End Role="Discografica" Type="Self.Discografica" Multiplicity="0..1" />
+          <End Role="Disco" Type="Self.Disco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discografica">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Disco">
+              <PropertyRef Name="id_discografia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tema_Disco">
+          <End Role="Disco" Type="Self.Disco" Multiplicity="1" />
+          <End Role="Tema" Type="Self.Tema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disco">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tema">
+              <PropertyRef Name="id_disco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoMusicaModelStoreContainer">
+          <EntitySet Name="Autor" EntityType="Self.Autor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disco" EntityType="Self.Disco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discografica" EntityType="Self.Discografica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tema" EntityType="Self.Tema" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Disco_Autor" Association="Self.FK_Disco_Autor">
+            <End Role="Autor" EntitySet="Autor" />
+            <End Role="Disco" EntitySet="Disco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disco_Categoria" Association="Self.FK_Disco_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Disco" EntitySet="Disco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disco_Discografica" Association="Self.FK_Disco_Discografica">
+            <End Role="Discografica" EntitySet="Discografica" />
+            <End Role="Disco" EntitySet="Disco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tema_Disco" Association="Self.FK_Tema_Disco">
+            <End Role="Disco" EntitySet="Disco" />
+            <End Role="Tema" EntitySet="Tema" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoMusicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="decripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="spotify" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="twitter" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Disco" Relationship="Self.FK_Disco_Autor" FromRole="Autor" ToRole="Disco" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Disco" Relationship="Self.FK_Disco_Categoria" FromRole="Categoria" ToRole="Disco" />
+        </EntityType>
+        <EntityType Name="Disco">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_discografia" Type="Int32" />
+          <Property Name="id_autor" Type="Int32" />
+          <Property Name="id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imagen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Autor" Relationship="Self.FK_Disco_Autor" FromRole="Disco" ToRole="Autor" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_Disco_Categoria" FromRole="Disco" ToRole="Categoria" />
+          <NavigationProperty Name="Discografica" Relationship="Self.FK_Disco_Discografica" FromRole="Disco" ToRole="Discografica" />
+          <NavigationProperty Name="Tema" Relationship="Self.FK_Tema_Disco" FromRole="Disco" ToRole="Tema" />
+        </EntityType>
+        <EntityType Name="Discografica">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imagen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Disco" Relationship="Self.FK_Disco_Discografica" FromRole="Discografica" ToRole="Disco" />
+        </EntityType>
+        <EntityType Name="Tema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_disco" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="link" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Disco" Relationship="Self.FK_Tema_Disco" FromRole="Tema" ToRole="Disco" />
+        </EntityType>
+        <Association Name="FK_Disco_Autor">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="0..1" />
+          <End Role="Disco" Type="Self.Disco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Disco">
+              <PropertyRef Name="id_autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disco_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Disco" Type="Self.Disco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Disco">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disco_Discografica">
+          <End Role="Discografica" Type="Self.Discografica" Multiplicity="0..1" />
+          <End Role="Disco" Type="Self.Disco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discografica">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Disco">
+              <PropertyRef Name="id_discografia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tema_Disco">
+          <End Role="Disco" Type="Self.Disco" Multiplicity="1" />
+          <End Role="Tema" Type="Self.Tema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disco">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tema">
+              <PropertyRef Name="id_disco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoMusicaDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autor" EntityType="Self.Autor" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Disco" EntityType="Self.Disco" />
+          <EntitySet Name="Discografica" EntityType="Self.Discografica" />
+          <EntitySet Name="Tema" EntityType="Self.Tema" />
+          <AssociationSet Name="FK_Disco_Autor" Association="Self.FK_Disco_Autor">
+            <End Role="Autor" EntitySet="Autor" />
+            <End Role="Disco" EntitySet="Disco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disco_Categoria" Association="Self.FK_Disco_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Disco" EntitySet="Disco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disco_Discografica" Association="Self.FK_Disco_Discografica">
+            <End Role="Discografica" EntitySet="Discografica" />
+            <End Role="Disco" EntitySet="Disco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tema_Disco" Association="Self.FK_Tema_Disco">
+            <End Role="Disco" EntitySet="Disco" />
+            <End Role="Tema" EntitySet="Tema" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoMusicaModelStoreContainer" CdmEntityContainer="ProyectoMusicaDbContext">
+          <EntitySetMapping Name="Autor">
+            <EntityTypeMapping TypeName="ProyectoMusicaModel.Autor">
+              <MappingFragment StoreEntitySet="Autor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="decripcion" ColumnName="decripcion" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="spotify" ColumnName="spotify" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="ProyectoMusicaModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disco">
+            <EntityTypeMapping TypeName="ProyectoMusicaModel.Disco">
+              <MappingFragment StoreEntitySet="Disco">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_discografia" ColumnName="id_discografia" />
+                <ScalarProperty Name="id_autor" ColumnName="id_autor" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discografica">
+            <EntityTypeMapping TypeName="ProyectoMusicaModel.Discografica">
+              <MappingFragment StoreEntitySet="Discografica">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tema">
+            <EntityTypeMapping TypeName="ProyectoMusicaModel.Tema">
+              <MappingFragment StoreEntitySet="Tema">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_disco" ColumnName="id_disco" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="link" ColumnName="link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<_04_Data.Datos.Disco>
+@{
+    ViewBag.Title = "Index";
+    string madre = "";
+    if (ViewBag.Message != null && ViewBag.Message != "")
+    {
+        madre = ViewBag.Message;
+    }
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Discos</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Incio</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Discos</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+
+
+
+<!-- Discos -->
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="text-center pb-2">
+            <h2>@madre</h2>
+
+            <h6 class="text-primary text-uppercase font-weight-bold">La mejor música</h6>
+            <h1 class="mb-4">Lista Discos</h1>
+            <p class="btn btn-primary py-2 px-4 my-2">@Html.ActionLink("Añadir disco", "Create")</p>
+
+        </div>
+
+
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-5">
+                    <div class="bg-secondary">
+                        <div class="text-center p-4">
+                            <img style="height: 300px; object-fit: cover; " class="disco-img" src="@Html.DisplayFor(modelItem => item.imagen)" alt="">
+                        </div>
+                        <div class="bg-primary text-center p-4">
+                            <h3 class="m-0">@Html.DisplayFor(modelItem => item.nombre)</h3>
+                        </div>
+                        <div class="d-flex flex-column align-items-center py-4">
+                            <h5>@Html.DisplayFor(modelItem => item.Autor.nombre)</h5>
+                            @* <p>@Html.DisplayFor(modelItem => item.Categoria.nombre)</p>*@
+                            @*<a href="Temas.html" class="btn btn-primary py-2 px-4 my-2">Canciones</a>*@
+                        <span>@Html.ActionLink("Borrar", "Delete", new { id = item.id }) | @Html.ActionLink("Detalles Ajax", "Details", new { id = item.id })</span>
+                            <p class="btn btn-primary py-2 px-4 my-2">@Html.ActionLink("Canciones del disco", "Index", "Tema", new { id = item.id, madre = "Disco", nombreMadre = Model.FirstOrDefault().nombre }, null)</p>
+                            
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+</div>

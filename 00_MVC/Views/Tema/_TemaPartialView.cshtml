@@ -1,0 +1,79 @@
+﻿@model _04_Data.Datos.Tema
+
+@{
+    ViewBag.Title = "Details";
+}
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Detalles Temas</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Temas</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Detalles Temas</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Tema -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 pb-2 pb-lg-0">
+                <img class="img-fluid w-100" src="https://i1.wp.com/thebestbrainpossible.com/wp-content/uploads/2016/08/rsz_1adobestock_68911612.jpg?ssl=1" alt="">
+                <img class="img-fluid w-100" src="@Html.DisplayFor(model => model.Disco.imagen)" alt="">
+
+
+            </div>
+            <div class="col-lg-8">
+                <span>Nombre canción: </span>
+                <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(model => model.nombre)</span>
+                <br />
+                <span>Disco: </span>
+                <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(model => model.Disco.nombre)</span>
+                <br /><span>Artista: </span>
+                <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(model => model.Disco.id_autor)</span>
+                <br />
+                <span>Link: </span>
+                <span class="text-primary text-uppercase font-weight-bold artista"><a href="@Html.DisplayFor(model => model.link)" target="_blank" rel="noopener noreferrer">@Html.DisplayFor(model => model.link)</a></span>
+                <br />
+                <div class="d-flex align-items-center pt-2 ">
+                    <a href="@Html.DisplayFor(model => model.link)" target="_blank" rel="noopener noreferrer">
+                        <button type="button" class="btn-play">
+                            <span></span>
+                        </button>
+                    </a>
+                    <h4 class="font-weight-bold m-0 ml-4">@Html.DisplayFor(model => model.nombre)</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </p>
+
+    </div>
+
+</div>
+@{
+    string onClickAnterior = "tema(" + Model.id + "," + 0 + ")";
+    string onClickSiguiente = "tema(" + Model.id + "," + 1 + ")";
+}
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <input class="btn btn-primary py-2 px-4 my-2" type="button" value="Anterior" onclick=@onClickAnterior>  |
+            <input class="btn btn-primary py-2 px-4 my-2" type="button" value="Siguiente" onclick=@onClickSiguiente>
+
+
+        </div>
+    </div>
+</div>
+
+@{
+    Layout = null;
+}

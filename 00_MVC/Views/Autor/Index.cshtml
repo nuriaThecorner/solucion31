@@ -1,0 +1,109 @@
+﻿@model IEnumerable<_04_Data.Datos.Autor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.decripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.spotify)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.twitter)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.decripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imagen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.spotify)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.twitter)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+
+
+<!-- Cabecera inicio -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Artistas</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Inicio</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Artistas</p>
+        </div>
+    </div>
+</div>
+<!-- Cabecera final -->
+
+<div class="text-center pb-2">
+    <p class="btn btn-primary py-2 px-4 my-2">@Html.ActionLink("Crear Artista", "Create")</p>
+
+
+</div>
+
+@foreach (var item in Model)
+{
+    <!-- Artista -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 pb-4 pb-lg-0">
+                    <img class="img-fluid w-100" src="@Html.DisplayFor(modelItem => item.imagen)" alt="">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.id }) |
+                    @Html.ActionLink("Discos de este autor", "Index", "Disco", new { id = item.id, categoria = false }, null)
+
+                    @*@Html.ActionLink("Discos de este Artista", "Index", "Disco", new { id = item.id, madre = "Autor", nombreMadre = Model.FirstOrDefault().nombre }, null)  |*@
+
+                </div>
+                <div class="col-lg-7">
+                    <h1 class="mb-4">@Html.DisplayFor(modelItem => item.nombre)</h1>
+                    <p class="mb-4">@Html.DisplayFor(modelItem => item.decripcion)</p>
+                    <ul class="list-inline">
+                        <li><i class="far fa-dot-circle text-primary mr-3"></i><a target="_blank" class="border-bottom text-decoration-none" href="@Html.DisplayFor(modelItem => item.spotify)">Spotify</a>
+                        <li><i class="far fa-dot-circle text-primary mr-3"></i><a target="_blank" class="border-bottom text-decoration-none" href="@Html.DisplayFor(modelItem => item.twitter)">Twitter</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Artista final -->
+}

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<_04_Data.Datos.Discografica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Discográficas</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Inicio</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Discográficas</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- discograficas Start -->
+<div class="container-fluid pt-5">
+    <div class="container">
+
+        <div class="text-center pb-2">
+            <h6 class="text-primary text-uppercase font-weight-bold">Compañias</h6>
+            <h1 class="mb-4">Sellos discográficos</h1>
+        </div>
+        <div class="row pb-3">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 text-center mb-5">
+                    <img class="card-img-art" src="@Html.DisplayFor(modelItem => item.imagen)" alt="">
+                    <p>@Html.DisplayFor(modelItem => item.nombre)</p>
+
+
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.id })
+                </div>
+
+            }
+        </div>
+        <div class="text-center pb-2">
+            <p class="btn btn-default btn btn-primary py-2 px-4 my-2 ">
+                @Html.ActionLink("Añadir Discográfica", "Create")
+            </p>
+        </div>
+    </div>
+</div>
+<!-- discograficas End -->

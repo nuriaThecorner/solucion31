@@ -1,0 +1,54 @@
+﻿@model _04_Data.Datos.Discografica
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Editar discográfica</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Inicio</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Editar discográfica</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- discograficas Start -->
+<div class="container-fluid pt-5">
+    <div class="container">
+
+        <div>
+            <h4>Discografica</h4>
+            <hr />
+            <div class="container-fluid py-5">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 pb-4 pb-lg-0">
+
+                            @*@Html.DisplayNameFor(model => model.imagen)*@
+                            <img class="img-fluid w-100" src="@Html.DisplayFor(model => model.imagen)" alt="discografica">
+
+
+                        </div>
+
+                        <div class="col-lg-7">
+
+                            @Html.DisplayNameFor(model => model.nombre):
+
+                            <h1 class="mb-4">@Html.DisplayFor(model => model.nombre)</h1>
+                        </div>
+
+
+                    </div>
+                    <p>
+                        @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+                        @Html.ActionLink("Volver a la lista", "Index")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model _04_Data.Datos.Categoria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Detalles categoria</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Inicio</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Detalles categoria</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<div class="container-fluid pt-5">
+    <div class="container">
+
+
+            <div>
+                <h4>Categoria</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.nombre)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                <span class="btn btn-default btn btn-primary py-2 px-4 my-2">@Html.ActionLink("Editar", "Edit", new { id = Model.id }) </span>|
+                @Html.ActionLink("Volver a la lista", "Index")
+            </p>
+        </div>
+</div>

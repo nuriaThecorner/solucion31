@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="584ad4120683498096a986df3c4df32b" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoMusicaModel.Autor" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMusicaModel.Categoria" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMusicaModel.Disco" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMusicaModel.Discografica" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoMusicaModel.Tema" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoMusicaModel.FK_Disco_Autor" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoMusicaModel.FK_Disco_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoMusicaModel.FK_Disco_Discografica" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoMusicaModel.FK_Tema_Disco" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

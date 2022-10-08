@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musica Nuria</title>
+
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/style.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <!--<link href="img/favicon.ico" rel="icon">-->
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <!--<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">-->
+    <!-- Customized Bootstrap Stylesheet -->
+    <!--<link href="Content/style.css" rel="stylesheet">-->
+
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
+            <a href="/Home" class="navbar-brand ml-lg-3">
+                <h1 class="m-0 display-5 text-uppercase text-primary"><i class="fa fa-music"></i> Musica</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav m-auto py-0">
+                    <a href="/Home" class="nav-item nav-link active">Inicio</a>
+                    <a href="/Disco" class="nav-item nav-link">Discos</a>
+                    <a href="/Autor" class="nav-item nav-link">Artistas</a>
+                    <a href="/Discografica" class="nav-item nav-link">Discografícas</a>
+                    <a href="/Tema" class="nav-item nav-link">Temas</a>
+                </div>
+                <a href="/Categoria" class="btn btn-primary py-2 px-4 d-none d-lg-block">Categorias</a>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+    @*<div class="container body-content">*@
+    @RenderBody()
+    @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            </footer>
+        </div>*@
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
+        <div class="row pt-5">
+            <div class="col-lg-7 col-md-6">
+                <div class="row">
+                    <div class="col-md-6 mb-5">
+                        <h3 class="text-primary mb-4">Contacta</h3>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>123 Calle principal, Barcelona, España</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
+                        <p><i class="fa fa-envelope mr-2"></i>info@musica.com</p>
+                        <div class="d-flex justify-content-start mt-4">
+                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-5">
+                        <h3 class="text-primary mb-4">Enlaces</h3>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-white mb-2" href="/Home"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-white mb-2" href="/Disco"><i class="fa fa-angle-right mr-2"></i>Discos</a>
+                            <a class="text-white mb-2" href="/Autor"><i class="fa fa-angle-right mr-2"></i>Artistas</a>
+                            <a class="text-white mb-2" href="/Discografica"><i class="fa fa-angle-right mr-2"></i>Discografícas</a>
+                            <a class="text-white mb-2" href="/Tema"><i class="fa fa-angle-right mr-2"></i>Temas</a>
+                            <a class="text-white mb-2" href="/Categoria"><i class="fa fa-angle-right mr-2"></i>Categorias</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6 mb-5">
+                <h3 class="text-primary mb-4">Decripción</h3>
+                <p>Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum sea tempor magna tempor. Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum sea tempor magna tempor. Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum sea tempor magna tempor. Accu kasd sed ea duo ipsum. Dolor duo eirmod sea justo no lorem est diam</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: #3E3E4E !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white">
+                    &copy; <a href="#">Musica</a>. Todos los derechos reservados.
+
+                </p>
+            </div>
+            <div class="col-lg-6 text-center text-md-right">
+                <ul class="nav d-inline-flex">
+                    <li class="nav-item">
+                        <a class="nav-link text-white py-0" href="/Home/Contact">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white py-0" href="#">Terminos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white py-0" href="#">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white py-0" href="#">Ayuda</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/easing/easing.min.js"></script>
+    <script src="Scripts/waypoints/waypoints.min.js"></script>
+    <script src="Scripts/counterup/counterup.min.js"></script>
+    <script src="Scripts/owlcarousel/owl.carousel.min.js"></script>-->
+    <!-- Contact Javascript File -->
+    <!--<script src="Scripts/jqBootstrapValidation.min.js"></script>
+    <script src="Scripts/contact.js"></script>-->
+    <!-- Template Javascript -->
+    <!--<script src="Scripts/main.js"></script>-->
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    *@
+    <!--TEMPLATE inicio-->
+    <!-- Bootstrap core JS-->
+    @Scripts.Render("~/bundles/main")
+
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/bundles/waypoints.min")
+    @Scripts.Render("~/bundles/owlcarousel")
+
+    @Scripts.Render("~/bundles/carousel.min")
+
+    @Scripts.Render("~/bundles/easing.min")
+    @Scripts.Render("~/bundles/easing")
+
+    @Scripts.Render("~/bundles/counterup")
+
+    @Scripts.Render("~/bundles/contact.min")
+
+    @Scripts.Render("~/bundles/jqBootstrapValidation.min")
+    @Scripts.Render("~/bundles/jquery-3.4.1")
+
+    @Scripts.Render("~/bundles/bootstrap.bundle.min")
+    @Scripts.Render("~/bundles/miAjax")
+
+
+
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

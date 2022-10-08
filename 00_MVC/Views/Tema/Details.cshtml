@@ -1,0 +1,114 @@
+﻿@model _04_Data.Datos.Tema
+
+@{
+    ViewBag.Title = "Details";
+}
+<!-- Header Start -->
+<!--<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Detalles Temas</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Temas</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Detalles Temas</p>
+        </div>
+    </div>
+</div>-->
+<!-- Header End -->
+<!-- Tema -->
+<!--<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-9">
+                <span>Nombre canción: </span>
+                <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(model => model.nombre)</span>
+                <br />
+                <span>Disco: </span>
+                <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(model => model.Disco.nombre)</span>
+                <br />
+                <span>Link: </span>
+                <span class="text-primary text-uppercase font-weight-bold artista"><a href="@Html.DisplayFor(model => model.link)" target="_blank" rel="noopener noreferrer">@Html.DisplayFor(model => model.link)</a></abbr></span>
+                <br />
+                <div class="d-flex align-items-center pt-2 ">
+                    <a href="@Html.DisplayFor(model => model.link)" target="_blank" rel="noopener noreferrer">
+                        <button type="button" class="btn-play">
+                            <span></span>
+                        </button>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        <br /><br />
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+            @Html.ActionLink("Vovler a la lista", "Index")
+        </p>
+
+    </div>
+
+</div>-->
+<h2>@ViewBag.Message </h2>
+
+<div id="TemaPartialView"> </div>
+
+@{
+    int miId = Model.id + 1;
+}
+<script type="text/javascript">
+
+    document.body.onload = function () {
+        tema(@miId, 0);
+    }
+
+    function tema(param1, param2) {
+        var apiUrl = 'https://localhost:44359/api/temaapi';
+        //var apiUrl = 'http://apiproyectomusica.somee.com/api/temaapi';
+
+
+        if (param1 > 0) {
+            //apiUrl = apiUrl + "/" + param1 + "/" + siguente;
+            //var boolSiguiente = 0;
+            //if (param2 != null && param2 > 0) {
+            //    boolSiguiente = 1;
+            //}
+            apiUrl = apiUrl + "?id=" + param1 + "&siguiente=" + param2;
+            //llamamos a un objeto de la librería jQuery y le pasamos la apiUrl
+            $.ajax(
+                {
+                    //parámetros de configuración del objeto Ajax de jQuery
+                    type: "GET", //HTTP GET Method
+                    url: apiUrl//, // Controller/View
+                    //data: No es necesario: Es GET
+                    //el objeto nos muestra lo que le ha devuelto la api como parámetro: "res"
+                }).done(function (res) {
+                    //Enviamos el jSon "res" al EmpleadosMvcController
+                    //método: _EmpleadoMvcOtraPartialView(res)
+                    $.ajax(
+                        {
+                            type: "POST", //HTTP POST Method
+                            //url: "_EmpleadoMvcOtraPartialView", // Controller/View
+                            url: "../_TemaPartialView", // Controller/View
+                            data: res
+                            //Nos devuelve una respuesta "resDeLaRes"
+                            //Que es un string con el html de la vista _EmpleadoMvcOtraPartialView
+                        }).done(function (resDeLaRes) {
+                            //Borramos lo que pueda haber en todos los div de la Class = miClase
+                            //$('.miClase').empty();
+                            //Cargamos la Vista Html dentro del <div>
+                            $('#TemaPartialView').empty().append(resDeLaRes);
+                        }).fail(function (resDeLaRes) {
+                            console.log(resDeLaRes);
+                        }).always(function (resDeLaRes) {
+                            console.log(resDeLaRes);
+                        });
+                }).fail(function (res) {
+                    console.log(res);
+                }).always(function (res) {
+                    console.log(res);
+                });
+        }
+    }
+</script>

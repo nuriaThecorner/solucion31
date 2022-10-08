@@ -1,0 +1,88 @@
+﻿@model IEnumerable<_04_Data.Datos.Tema>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Temas</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Inicio</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Temas</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<div class="container">
+    <div class="text-center pb-2"> 
+
+    </div>
+
+</div>
+
+
+
+@foreach (var item in Model)
+{
+    <!-- Tema -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-3 pb-2 pb-lg-0">
+                    <img class="img-fluid w-100" src="@Html.DisplayFor(modelItem => item.Disco.imagen)" alt="">
+
+
+                </div>
+                <div class="col-lg-9">
+                    <span>Discográfica: </span>
+                    <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(modelItem => item.Disco.Discografica.nombre)</span>
+                    <br />
+                    <span>Categoria: </span>
+                    <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(modelItem => item.Disco.Categoria.nombre)</span>
+                    <br />
+                    <span>Artista: </span>
+                    <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(modelItem => item.Disco.Autor.nombre)</span>
+                    <br />
+                    <span>Disco: </span>
+                    <span class="text-primary text-uppercase font-weight-bold artista">@Html.DisplayFor(modelItem => item.Disco.nombre)</span>
+                    <br />
+                    <span>Canción: </span>
+                    <div class="d-flex align-items-center pt-2 ">
+                        <a href="@Html.DisplayFor(modelItem => item.link)" target="_blank" rel="noopener noreferrer">
+                            <button type="button" class="btn-play">
+                                <span></span>
+                            </button>
+                        </a>
+                        <h4 class="font-weight-bold m-0 ml-4">@Html.DisplayFor(modelItem => item.nombre)</h4>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Detalles Ajax", "Details", new { id = item.id }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.id })
+
+            </div>
+        </div>
+
+    </div>
+    <hr />
+
+}
+<!--Tema final -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <p class="btn btn-primary py-2 px-4 my-2">@Html.ActionLink("Crear Tema", "Create")</p>
+
+        </div>
+    </div>
+</div>

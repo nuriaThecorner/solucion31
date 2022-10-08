@@ -1,0 +1,62 @@
+﻿@model IEnumerable<_04_Data.Datos.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Header Start -->
+<div class="jumbotron jumbotron-fluid mb-5">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3">Categorías</h1>
+        <div class="d-inline-flex align-items-center text-white">
+            <p class="m-0"><a class="text-white" href="">Inicio</a></p>
+            <i class="fa fa-circle px-3"></i>
+            <p class="m-0">Categorías</p>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<div class="container-fluid pt-5">
+    <div class="container">
+
+        <div class="text-center pb-2">
+
+
+            <table class="table tabcategorias">
+                <tr>
+                    <th>
+                        imagen
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/Content/img/genero.png" alt="genero">
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                            @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                            @Html.ActionLink("Borrar", "Delete", new { id = item.id }) |
+                            @Html.ActionLink("Discos de esta Categoría", "Index", "Disco", new { id = item.id, categoria = true }, null)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            <p class="btn btn-default btn btn-primary py-2 px-4 my-2 ">
+                @Html.ActionLink("Añadir categoría", "Create")
+            </p>
+        </div>
+    </div>
+</div>
